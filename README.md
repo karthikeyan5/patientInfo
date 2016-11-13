@@ -1,1 +1,3 @@
-This is a sample web application made in ExpressJs, Angularjs and MongoDB
+# Patient Info
+
+A sample application made with [Sails](http://sailsjs.org) and [AnglularJS](https://angularjs.org).
