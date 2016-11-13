@@ -1,0 +1,1 @@
+This is a sample web application made in ExpressJs, Angularjs and MongoDB
