@@ -1,1 +1,34 @@
-<p>This is the partial for view 1.</p>
+<div style="padding-top:10px;">
+    <div class="table-responsive">
+        <table st-safe-src="rowCollection" st-table="displayedCollection" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">S.No</th>
+                    <th class="sortable" st-sort="firstname">First Name</th>
+                    <th class="sortable" st-sort="lastname">Last Name</th>
+                    <th class="sortable" st-sort="gender">Gender</th>
+                    <th class="sortable" st-sort="getAge(dob)">Age</th>
+                    <th>DOB</th>
+                    <th>Phone</th>
+                </tr>
+                <tr>
+                    <th colspan="7">
+                        <input st-delay="0" st-search placeholder="Start typing to filter" class="input-sm form-control" type="search" autofocus/>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in displayedCollection" style="cursor: pointer;" ng-click="open($index)">
+                    <td>{{$index + 1}}</td>
+                    <td class="text-capitalize">{{row.firstname.toLowerCase()}}</td>
+                    <td class="text-capitalize">{{row.lastname == '' ? '---' : row.lastname.toLowerCase()}}</td>
+                    <td class="text-capitalize">{{row.gender == 'Not Selected' ? '---' : row.gender.toLowerCase()}}</td>
+                    <td>{{row.dob == null ? '---' : getAge(row.dob)}}</td>
+                    <td>{{row.dob == null ? '---' : row.dob | date:"dd.MM.yyyy"}}</td>
+                    <td>{{row.phone == '' ? '---' : row.phone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

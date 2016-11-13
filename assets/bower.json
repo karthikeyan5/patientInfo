@@ -10,6 +10,13 @@
     "angular-route": "~1.5.0",
     "angular-loader": "~1.5.0",
     "angular-mocks": "~1.5.0",
-    "html5-boilerplate": "^5.3.0"
+    "html5-boilerplate": "^5.3.0",
+    "angular-animate": "^1.5.8",
+    "angular-touch": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "angular-bootstrap": "^2.2.0",
+    "jquery": "^3.1.1",
+    "angular-smart-table": "^2.1.8",
+    "cleave.js": "^0.7.10"
   }
 }

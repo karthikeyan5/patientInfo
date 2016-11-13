@@ -1,25 +1,16 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
 
-.menu:before {
-  content: "[";
+.sortable {
+    cursor: pointer;
 }
-
-.menu:after {
-  content: "]";
+.sortable:after {
+    content: url(data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIUnC2nKLnT4or00PvyrQwrPzUZshQAOw==);
+    padding-left: 0.3em;
 }
-
-.menu > li {
-  display: inline;
+.st-sort-ascent:after {
+    content: '\25B2';
 }
-
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.st-sort-descent:after {
+    content: '\25BC';
 }
