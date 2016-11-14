@@ -8,6 +8,7 @@ angular.module('myApp', [
   'ui.bootstrap',
   'smart-table',
   'cleave.js',
+  'ngToast',
   'myApp.view1',
   'myApp.view2',
   'myApp.version',

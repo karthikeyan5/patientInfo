@@ -1,14 +1,19 @@
 <div style="padding-top:20px;">
-  <form class="form-horizontal" autocomplete="off" ng-submit="ok()">
+  <!--{{party | json}}-->
+  <form id="form" name="form" class="form-horizontal" autocomplete="off" ng-submit="ok()">
 
     <div class="form-group">
       <label for="firstname" class="col-sm-2 control-label">First Name: <span style="color: red">*</span></label>
       <div class="col-sm-4">
-        <input required type="text" class="form-control" id="firstname" placeholder="Enter First name" ng-model="party.firstname">
+        <input autofocus required type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter First name" ng-model="party.firstname" ng-pattern="/^[\sa-zA-Z]+$/">
+        <span style="color: red" class="error" ng-show="form.firstname.$error.required && form.firstname.$dirty">Required!!!</span>
+        <span style="color: red" class="error" ng-show="form.firstname.$error.pattern && form.firstname.$dirty">Only alphabets please.</span>        
       </div>
       <label for="lastname" class="col-sm-2 control-label">Last Name: <span style="color: red">*</label>
       <div class="col-sm-4">
-        <input required type="text" class="form-control" id="lastname" placeholder="Enter Last name" ng-model="party.lastname">
+        <input required type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last name" ng-model="party.lastname" ng-pattern="/^[\sa-zA-Z]+$/">
+        <span style="color: red" class="error" ng-show="form.lastname.$error.required && form.lastname.$dirty">Required!!!</span>
+        <span style="color: red" class="error" ng-show="form.lastname.$error.pattern && form.lastname.$dirty">Only alphabets please.</span>        
       </div>
     </div>
     <div class="form-group">
@@ -23,11 +28,15 @@
       </div>
       <label for="dob" class="col-sm-1 control-label"> DOB:</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="dob" placeholder="DD/MM/YYYY" ng-model="party.dob">
+        <input cleave="options.date" type="text" class="form-control" id="dob" name="dob" placeholder="DD/MM/YYYY" ng-model="datestring" ng-blur="setdate()">
+        <span style="color: red" class="error" ng-show="form.dob.$error.type && form.dob.$dirty">Invalid Date.</span>        
+        <span style="color: red" class="error" ng-show="form.dob.$error.future && form.dob.$dirty">Time travel to future not allowed!!!</span>                
       </div>
+    <!--datestring -  {{datestring}}<br>-->
+      <!--{{party.dob | date}}-->
       <label for="age" class="col-sm-1 control-label">Age:</label>
       <div class="col-sm-2">
-        <input readonly type="text" class="form-control" id="age" placeholder="-" ng-model="party.age" tabindex="-1">
+        <input readonly type="text" class="form-control" id="age" placeholder="-" ng-model="age" tabindex="-1">
       </div>
     </div>
   <!--  <div class="form-group" style="margin-bottom:0px;">
@@ -91,23 +100,30 @@
     <div class="form-group">
       <label for="phone" class="col-sm-2 control-label">Phone: <span style="color: red">*</span></label>
       <div class="col-sm-4">
-        <input required type="text" class="form-control" id="phone" placeholder="" ng-model="party.phone">
+        <input required cleave="options.phone" type="text" class="form-control" id="phone" name="phone" placeholder="" ng-model="party.phone" ng-blur="validatephone()" ng-change="revalidatephone()"> 
+        <!--ng-pattern="/^\+[0-9]+$/">-->
+        <span style="color: red" class="error" ng-show="form.phone.$error.required && form.phone.$dirty">Required!!!</span>
+        <span style="color: red" class="error" ng-show="form.phone.$error.length && form.phone.$dirty">Looks like an invalid phone number.</span>
       </div>
     </div>
     <div class="form-group">
-      <label for="od" class="col-sm-2 control-label">Other Details:</label>
+      <label for="otherinfo" class="col-sm-2 control-label">Other Details:</label>
       <div class="col-sm-7">
-        <textarea type="text" rows="4" class="form-control" id="od" placeholder="" ng-model="party.od"></textarea>
+        <textarea type="text" rows="4" class="form-control" id="otherinfo" placeholder="" ng-model="party.otherinfo"></textarea>
       </div>
     </div>
 
+<!--hihiph - {{form.phone.$error}},{{form.phone.$valid}}<br>-->
+<!--hihidob - {{form.dob.$error}},{{form.dob.$valid}}<br>-->
+<!--hihi - {{form.$valid}}-->
     <div class="form-group pull-right" style="padding-right:15px;">
 
-      <button type="submit" class="btn btn-success">Save</button>
-      <button class="btn btn-danger">Reset</button>
+      <button ng-disabled="!form.$valid" type="submit" class="btn btn-success">Save</button>
+      
 
     </div>
 
 
   </form>
+  <button class="btn btn-danger" ng-click="reset(0)">Reset</button>
 </div>

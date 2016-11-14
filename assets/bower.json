@@ -17,6 +17,7 @@
     "angular-bootstrap": "^2.2.0",
     "jquery": "^3.1.1",
     "angular-smart-table": "^2.1.8",
-    "cleave.js": "^0.7.10"
+    "cleave.js": "^0.7.10",
+    "ngToast": "ngtoast#^2.0.0"
   }
 }

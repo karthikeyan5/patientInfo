@@ -1,0 +1,14 @@
+<div class="modal-header hidden-print">
+ <h3 class="text-center">Other Details</h3>
+ 
+ </div>
+
+ <div style="padding:5px;">
+<p>
+    {{row.otherinfo === '' ? 'Not Available' : row.otherinfo;}}
+</p>
+ </div>
+
+ <div class="modal-footer">
+   <button ng-click="cancel()" class="btn btn-warning">Close</button>
+</div>

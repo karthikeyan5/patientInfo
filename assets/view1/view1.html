@@ -7,7 +7,7 @@
                     <th class="sortable" st-sort="firstname">First Name</th>
                     <th class="sortable" st-sort="lastname">Last Name</th>
                     <th class="sortable" st-sort="gender">Gender</th>
-                    <th class="sortable" st-sort="getAge(dob)">Age</th>
+                    <th>Age</th>
                     <th>DOB</th>
                     <th>Phone</th>
                 </tr>
@@ -18,11 +18,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in displayedCollection" style="cursor: pointer;" ng-click="open($index)">
+                <tr ng-repeat="row in displayedCollection" style="cursor: pointer;" ng-click="open(row)">
                     <td>{{$index + 1}}</td>
                     <td class="text-capitalize">{{row.firstname.toLowerCase()}}</td>
                     <td class="text-capitalize">{{row.lastname == '' ? '---' : row.lastname.toLowerCase()}}</td>
-                    <td class="text-capitalize">{{row.gender == 'Not Selected' ? '---' : row.gender.toLowerCase()}}</td>
+                    <td class="text-capitalize">{{row.gender === 'Not Selected' ? '---' : row.gender.toLowerCase()}}</td>
                     <td>{{row.dob == null ? '---' : getAge(row.dob)}}</td>
                     <td>{{row.dob == null ? '---' : row.dob | date:"dd.MM.yyyy"}}</td>
                     <td>{{row.phone == '' ? '---' : row.phone}}</td>

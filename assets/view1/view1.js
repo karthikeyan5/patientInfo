@@ -9,7 +9,7 @@ angular.module('myApp.view1', ['ngRoute','smart-table'])
   });
 }])
 
-.controller('View1Ctrl', ['$scope','$http',function($scope,$http) {
+.controller('View1Ctrl', ['$scope','$http','$uibModal',function($scope,$http,$uibModal) {
     document.getElementById("tabnav").childNodes[1].className = "active";
     document.getElementById("tabnav").childNodes[3].className = "inactive";
 $scope.displayedCollection = [];
@@ -41,6 +41,41 @@ $http({method:'GET',
   }); 
 
 
+   $scope.open = function (row) {
+       //console.log($scope.displayedCollection);
+       //console.log($scope.rowCollection);
+       //setTimeout(function(){ $scope.rowCollection[1].isSelected = !$scope.rowCollection[1].isSelected;},1000);
+       
+       
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: '/view1/otherdetails.html',
+      controller: 'otherdetailsModal',
+      size: 'sm',
+      resolve: {
+        row: row
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+    }, function () {
+      console.log('Modal dismissed at: ' + new Date());
+    });
+  }
 
 
-}]);
+
+
+
+
+
+}])
+
+.controller('otherdetailsModal', function (row, $scope,$uibModalInstance, $uibModal) {
+$scope.row = row;
+
+// console.log('hi',row)
+ $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  }
+});
